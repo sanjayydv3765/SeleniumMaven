@@ -5,6 +5,15 @@
     <parameter name="UName" value="abc@gmail.com"/>
     <parameter name="Pswd" value="Abc@123"/>
     <classes>
+      <class name="testcases.HomeTest">
+        <methods>
+          <include name="Test1"/>
+          <include name="DataClean"/>
+          <include name="TearDown"/>
+          <include name="SetUp"/>
+          <include name="DataSetup"/>
+        </methods>
+      </class> <!-- testcases.HomeTest -->
       <class name="testcases.SimplilearnLoginTest">
         <methods>
           <include name="DataClean"/>

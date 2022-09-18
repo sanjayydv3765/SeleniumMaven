@@ -8,15 +8,18 @@ import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 import pages.LogInPage;
 
 public class SimplilearnLoginTest extends BaseClass {
 
 	@Test
 	public void Test1() {
+		test.log(LogStatus.INFO, "Test1 Started");
 		LogInPage lp = new LogInPage(driver);
-		lp.LogIN("sanjay@gmail.com", "xyz@123");
-       
+		lp.LogIN("sanjay@gmail.com", "Ayz@1234");
+
 		// Step6: Validate the error message on screen
 		WebElement Error = driver.findElement(By.id("msg_box"));
 
@@ -40,20 +43,22 @@ public class SimplilearnLoginTest extends BaseClass {
 		}
 	}
 
-	@Test(enabled = false)
-	@Parameters({"UName","Pswd"})
-	public void Test2(String UserName, String Password) {
+	@Test
+	@Parameters({ "uname", "pswd" })
+	public void Test2(String UsrName, String Pasword) {
+		test.log(LogStatus.INFO, "Test2 Started");
+		LogInPage lp = new LogInPage(driver);
+		lp.LogIN(UsrName, Pasword);
+	}
+
+	@Test
+	public void Test3() {
+		test.log(LogStatus.INFO, "Test3 Started");
+		String UserName = sheet.getRow(1).getCell(0).getStringCellValue();
+		String Password = sheet.getRow(0).getCell(1).getStringCellValue();
 		LogInPage lp = new LogInPage(driver);
 		lp.LogIN(UserName, Password);
 
-	}
-	@Test
-	public void Test3() {
-		String UserName = sheet.getRow(1).getCell(0).getStringCellValue();
-		String Password =sheet.getRow(0).getCell(1).getStringCellValue();
-		LogInPage lp = new LogInPage(driver);
-		lp.LogIN(UserName, Password);
-	
 	}
 
 }
